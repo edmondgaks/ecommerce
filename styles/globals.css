@@ -1,4 +1,4 @@
-tml,
+html,
 body, * {
   padding: 0;
   margin: 0;
@@ -225,6 +225,7 @@ text-align: end;
   display: flex ;
   justify-content: space-between;
 }
+
 .banner-desc button{
   border-radius: 15px;
   padding: 10px 16px;
