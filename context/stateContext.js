@@ -4,7 +4,7 @@ const Context = createContext();
 
 export const StateContext = ({ children }) => {
     const [showCart, setshowCart] = useState(false);
-    const [cartItems,setcartItems] = useState([]);
+    const [cartItems,setCartItems] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
     const [totalQuantities, setTotalQuantities] = useState(0);
     const [qty, setqty] = useState(1);
@@ -13,7 +13,7 @@ export const StateContext = ({ children }) => {
     let index;
     const incQty = () => {
         setqty((prevQty) => prevQty + 1);
-    }   
+    }
     const decQty = () => {
         setqty((prevQty) => {
             if(prevQty - 1 < 1) return 1;
@@ -28,14 +28,14 @@ export const StateContext = ({ children }) => {
         if(value === 'inc') {
             let newCartItems = [...cartItems, {...foundProduct, quantity: foundProduct.quantity + 1}]
             // foundProduct.quantity + 1;
-            setcartItems(newCartItems);
+            setCartItems(newCartItems);
             setTotalPrice((prevTotalPrice) => prevTotalPrice + foundProduct.price);
             setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1 );
         } else if(value == 'dec') {
             if(foundProduct.quantity > 1) {
                 let newCartItems = [...cartItems, {...foundProduct, quantity: foundProduct.quantity - 1}]
                 // foundProduct.quantity - 1;
-                setcartItems(newCartItems);
+                setCartItems(newCartItems);
                 setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price);
                 setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - 1 )
             }
@@ -54,11 +54,11 @@ export const StateContext = ({ children }) => {
                     quantity: cartProduct.quantiy + quantity
                 }
             })
-            setcartItems(updatedCartItems);
+            setCartItems(updatedCartItems);
             
         } else {
             product.quantity = quantity;
-            setcartItems([...cartItems, {...product}])
+            setCartItems([...cartItems, {...product}])
         }
         toast.success(`${qty} ${product.name} added to cart`);
     }
