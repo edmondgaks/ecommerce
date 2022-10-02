@@ -12,8 +12,8 @@ export default async function handler(req,res) {
                 payment_method_types: ['card'],
                 billing_address_collection: 'auto',
                 shipping_options: [
-                    { shipping_rate: ''},
-                    { shipping_rate: ''}, 
+                    { shipping_rate: 'shr_1LoV8iJmUCaI3p037pIo6SXK'},
+                    { shipping_rate: 'shr_1LoV9zJmUCaI3p03kDixJZKc'}, 
                 ],
                 line_items: req.body.cartItems.map((item) => {
                     const img = item.image[0].asset._ref;
@@ -27,7 +27,7 @@ export default async function handler(req,res) {
                                 images: [newImage],
                             },
                             unit_amount: item.price * 100,
-                        }, 
+                        },
                         adjustable_quantity: {
                             enabled: true,
                             minimum: 1,
