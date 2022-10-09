@@ -1,6 +1,6 @@
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY);
  
 export default async function handler(req,res) {
     if(req.method === 'POST') {
@@ -15,7 +15,7 @@ export default async function handler(req,res) {
                     { shipping_rate: 'shr_1LoV8iJmUCaI3p037pIo6SXK'},
                     { shipping_rate: 'shr_1LoV9zJmUCaI3p03kDixJZKc'}, 
                 ],
-                line_items: req.body.cartItems.map((item) => {
+                line_items: req.body.map((item) => {
                     const img = item.image[0].asset._ref;
                     const newImage = img.replace('image-', 'https://cdn.sanity.io/images/v2tkzg4u/production/').replace('-webp', '.webp');
                     // console.log('IMAGE', newImage);
